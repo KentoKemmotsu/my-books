@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="自分だけの読書記録を管理するMy Bookshelf">
+<title>MyBooks!</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="mark">▤</span>My Books!</a><div class="head-note">Read,Feel,Share on MyBooks!</div></header>
+<main class="wrap">
+<section class="hero"><div><p class="eyebrow">My READING JOURNEY</p><h1>Kentoの<br>MyBooks!</h1><p class="lead"></p></div>
+<div class="stats"><div><small>登録冊数</small><strong id="total">0</strong></div><div><small>読了</small><strong id="read">0</strong></div><div><small>これから読む</small><strong id="unread">0</strong></div><div><small>お気に入り</small><strong id="favorite">0</strong></div></div></section>
+<section class="dashboard"><div class="panel"><div class="section-head"><div><p class="eyebrow">ANNUAL GOAL</p><h2>今年の読書目標</h2></div><button class="text-btn" id="goalEdit">目標を変更</button></div><div class="goal-line"><strong><span id="goalRead">0</span> / <span id="goalTarget">24</span>冊</strong><b id="goalPct">0%</b></div><div class="progress"><span id="goalBar"></span></div><p class="muted" id="goalMessage">一冊ずつ、自分のペースで。</p></div><div class="panel"><p class="eyebrow">CLASSIFY</p><h2>ジャンル別の本</h2><div id="genres" class="genres"></div></div></section>
+<section class="toolbar"><input id="search" type="search" placeholder="タイトル・著者・感想・引用を検索…" aria-label="検索"><select id="filter"><option value="all">すべての本</option><option value="read">読了</option><option value="unread">これから読む</option><option value="favorite">お気に入り</option></select><select id="sort"><option value="new">登録した順</option><option value="title">タイトル順</option><option value="rating">評価が高い順</option><option value="date">読了日順</option></select><button class="btn primary" id="add">＋ 本を追加</button></section>
+<div class="section-head collection"><h2>本棚のコレクション</h2><span class="muted" id="count">0冊</span></div><section id="books" class="books" aria-live="polite"></section>
+<footer>© 2026 MyBooks! Create by Kento.</footer>
+</main>
+<dialog id="bookDialog"><form id="bookForm"><div class="dialog-head"><div><p class="eyebrow">BOOK DETAILS</p><h2 id="dialogTitle">本を追加する</h2></div><button type="button" class="x" data-close>×</button></div><input type="hidden" id="id"><div class="form-grid">
+<div class="field full"><label for="title">タイトル *</label><input id="title" required maxlength="120"></div>
+<div class="field"><label for="author">著者</label><input id="author" maxlength="100"></div>
+<div class="field"><label for="category">ジャンル</label><select id="category"><option>IT・技術</option><option>小説</option><option>ビジネス</option><option>学習・資格</option><option>エッセイ</option><option>漫画</option><option>その他</option></select></div>
+<div class="field"><label for="status">読書状況</label><select id="status"><option value="read">読了</option><option value="unread">これから読む</option></select></div>
+<div class="field"><label for="rating">評価</label><select id="rating"><option value="0">未評価</option><option value="1">★☆☆☆☆</option><option value="2">★★☆☆☆</option><option value="3">★★★☆☆</option><option value="4">★★★★☆</option><option value="5">★★★★★</option></select></div>
+<div class="field"><label for="readDate">読了日</label><input id="readDate" type="date"></div>
+<div class="field"><label for="purchaseDate">購入日</label><input id="purchaseDate" type="date"></div>
+<div class="field"><label for="color">表紙の色</label><select id="color"><option value="#52796f">フォレストグリーン</option><option value="#647da5">ブルー</option><option value="#b96b55">テラコッタ</option><option value="#8c719d">ラベンダー</option><option value="#c49a43">マスタード</option><option value="#4d6570">スレート</option><option value="#b8798a">ローズ</option></select></div>
+<div class="field"><label for="favoriteInput">お気に入り</label><select id="favoriteInput"><option value="0">通常</option><option value="1">♥ お気に入り</option></select></div>
+<div class="field full"><label for="coverUrl">表紙画像URL（任意）</label><input id="coverUrl" type="url" placeholder="https://example.com/cover.jpg"></div>
+<div class="field full"><label for="memo">感想・読書メモ</label><textarea id="memo" maxlength="1500"></textarea></div>
+<div class="field full"><label for="quote">心に残った言葉・引用</label><textarea id="quote" maxlength="1000"></textarea></div>
+</div><p class="muted note">画像ファイル本体のアップロードには未対応です。画像URLを指定してください。本のデータはこのブラウザー内に保存されます。</p><div class="dialog-actions"><button type="button" class="btn danger" id="delete" hidden>削除</button><span class="spacer"></span><button type="button" class="btn quiet" data-close>キャンセル</button><button class="btn primary" type="submit">保存する</button></div></form></dialog>
+<dialog id="goalDialog"><form id="goalForm"><div class="dialog-head"><h2>年間読書目標</h2><button type="button" class="x" data-close>×</button></div><div class="field"><label for="goalInput">今年読み終えたい冊数</label><input id="goalInput" type="number" min="1" max="999" required></div><div class="dialog-actions"><span class="spacer"></span><button type="button" class="btn quiet" data-close>キャンセル</button><button class="btn primary">保存</button></div></form></dialog>
+<script src="app.js"></script>
+</body></html>
